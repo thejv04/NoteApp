@@ -40,7 +40,7 @@ Built with **Kotlin** and **Jetpack Compose**.
 
 ### 📋 Requirements
 - Android 13 (API 33) or higher
-- ~10 MB of free storage
+- ~64 MB of free storage
 
 ### 📥 Installation
 
@@ -103,7 +103,7 @@ Construida con **Kotlin** y **Jetpack Compose**.
 
 ### 📋 Requisitos
 - Android 13 (API 33) o superior
-- ~10 MB de almacenamiento libre
+- ~64 MB de almacenamiento libre
 
 ### 📥 Instalación
 
