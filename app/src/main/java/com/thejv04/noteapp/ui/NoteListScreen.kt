@@ -30,6 +30,18 @@ import androidx.compose.ui.draw.clip
 import coil.compose.AsyncImage
 import androidx.compose.ui.layout.ContentScale
 
+/**
+ * Main screen that displays all notes in a staggered grid layout.
+ * Provides a floating action button to create new notes and
+ * a settings icon in the top bar.
+ *
+ * @param viewModel The [NoteViewModel] used to observe and manage notes.
+ * @param onNoteClick Callback invoked when a note card is tapped.
+ * @param onAddNote Callback invoked when the FAB is tapped, receives true if checklist.
+ * @param onSettings Callback invoked when the settings icon is tapped.
+ * @param language The current language code ("es" or "en").
+ */
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteListScreen(
@@ -131,6 +143,18 @@ fun NoteListScreen(
         }
     }
 }
+
+/**
+ * A card composable that displays a preview of a [Note].
+ * Shows the title, content or checklist items, and optionally
+ * the first attached image as a cover.
+ * Provides a delete button at the bottom right.
+ *
+ * @param note The note to display.
+ * @param onClick Callback invoked when the card is tapped.
+ * @param onDelete Callback invoked when the delete button is tapped.
+ */
+
 @Composable
 fun NoteCard(
     note: Note,

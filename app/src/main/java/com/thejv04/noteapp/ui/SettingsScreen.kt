@@ -12,6 +12,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.clickable
 import androidx.compose.ui.platform.LocalContext
 
+/**
+ * Settings screen that allows the user to customize the app experience.
+ * Provides options for toggling dark mode, selecting the app language,
+ * and displays information about the app including license and repository link.
+ *
+ * @param isDarkMode Whether dark mode is currently enabled.
+ * @param onDarkModeToggle Callback invoked when the dark mode switch is toggled.
+ * @param language The current language code ("es" or "en").
+ * @param onLanguageChange Callback invoked when the user selects a different language.
+ * @param onBack Callback invoked when the user navigates back.
+ */
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
@@ -50,7 +62,7 @@ fun SettingsScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            // Modo oscuro
+            /** Appearance section — dark mode toggle. */
             Text(
                 text = if (isSpanish) "Apariencia" else "Appearance",
                 style = MaterialTheme.typography.labelLarge,
@@ -74,7 +86,7 @@ fun SettingsScreen(
 
             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
-            // Idioma
+            /** Language section — chip selector for Spanish and English. */
             Text(
                 text = languageTitle,
                 style = MaterialTheme.typography.labelLarge,
@@ -98,7 +110,7 @@ fun SettingsScreen(
 
             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
-// Acerca de
+            /** About section — app info, license and repository link. */
             Text(
                 text = aboutTitle,
                 style = MaterialTheme.typography.labelLarge,

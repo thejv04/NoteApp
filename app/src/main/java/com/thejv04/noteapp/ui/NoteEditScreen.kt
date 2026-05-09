@@ -31,6 +31,18 @@ import com.thejv04.noteapp.model.Note
 import androidx.compose.material.icons.filled.PhotoLibrary
 import androidx.compose.material.icons.filled.Share
 
+/**
+ * Screen for creating and editing notes.
+ * Supports both plain text notes and checklist notes.
+ * Allows attaching images from the device gallery and sharing note content.
+ *
+ * @param viewModel The [NoteViewModel] used to insert and update notes.
+ * @param noteId The id of the note to edit, or -1 to create a new note.
+ * @param onBack Callback invoked when the user navigates back.
+ * @param language The current language code ("es" or "en").
+ * @param isChecklistDefault Whether the note should default to checklist mode.
+ */
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteEditScreen(
@@ -97,9 +109,11 @@ fun NoteEditScreen(
                     }
                 },
                 actions = {
+                    /** Opens the image picker to attach images to the note. */
                     IconButton(onClick = { imagePicker.launch("image/*") }) {
                         Icon(Icons.Default.PhotoLibrary, contentDescription = "Agregar imagen")
                     }
+                    /** Shares the note content via the Android share sheet. */
                     IconButton(onClick = {
                         val hasContent = if (isChecklist)
                             checklistItems.any { it.text.isNotBlank() }
@@ -186,7 +200,6 @@ fun NoteEditScreen(
             )
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Galería de imágenes
             if (imageUris.isNotEmpty()) {
                 LazyRow(
                     horizontalArrangement = Arrangement.spacedBy(8.dp),

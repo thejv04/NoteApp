@@ -19,9 +19,30 @@ import com.thejv04.noteapp.ui.NoteListScreen
 import com.thejv04.noteapp.ui.SettingsScreen
 import kotlinx.coroutines.launch
 
+/**
+ * Main entry point of the application.
+ * Sets up the navigation graph and provides user preferences
+ * (dark mode and language) to all screens.
+ *
+ * Hosts the following destinations:
+ * - note_list: Displays all notes in a staggered grid.
+ * - note_edit/{noteId}/{isChecklist}: Creates or edits a note.
+ * - settings: Displays user preferences and about information.
+ */
+
 class MainActivity : ComponentActivity() {
 
+    /**
+     * The [NoteViewModel] instance scoped to this activity.
+     * Shared across all composable screens via the navigation graph.
+     */
+
     private val viewModel: NoteViewModel by viewModels()
+
+    /**
+     * Initializes the activity, sets up the Compose content,
+     * reads user preferences and builds the navigation graph.
+     */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

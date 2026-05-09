@@ -5,7 +5,24 @@ import com.thejv04.noteapp.model.ChecklistItem
 import org.json.JSONArray
 import org.json.JSONObject
 
+/**
+ * Room [TypeConverter] for converting a list of [ChecklistItem] objects
+ * to and from a JSON string for database storage.
+ *
+ * Since Room cannot store complex objects directly, this converter
+ * serializes the list into a JSON string and deserializes it back
+ * when reading from the database.
+ */
+
 class ChecklistConverter {
+
+    /**
+     * Converts a list of [ChecklistItem] objects into a JSON string.
+     * Used by Room when writing to the database.
+     *
+     * @param items The list of checklist items to serialize.
+     * @return A JSON string representation of the list.
+     */
 
     @TypeConverter
     fun fromChecklistItems(items: List<ChecklistItem>): String {
@@ -19,6 +36,14 @@ class ChecklistConverter {
         }
         return array.toString()
     }
+
+    /**
+     * Converts a JSON string into a list of [ChecklistItem] objects.
+     * Used by Room when reading from the database.
+     *
+     * @param json The JSON string to deserialize.
+     * @return A list of [ChecklistItem] objects, or an empty list if the string is blank.
+     */
 
     @TypeConverter
     fun toChecklistItems(json: String): List<ChecklistItem> {
